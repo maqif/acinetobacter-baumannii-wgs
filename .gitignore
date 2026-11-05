@@ -1,0 +1,8 @@
+*.fastq
+wget-log
+amrfinderdb/
+spadesoutput/K*/
+spadesoutput/corrected/
+spadesoutput/misc/
+spadesoutput/tmp/
+spadesoutput/mismatch_corrector/

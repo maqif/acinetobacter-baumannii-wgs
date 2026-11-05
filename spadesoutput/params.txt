@@ -1,0 +1,36 @@
+Command line: /usr/libexec/spades/spades.py	-s	/home/muhammad_aqif/genomics/ncbi/SRR570.fastq	-o	/home/muhammad_aqif/genomics/ncbi/spadesoutput	--careful	-t	4	-m	8	--phred-offset	33	
+
+System information:
+  SPAdes version: 3.15.5
+  Python version: 3.14.4
+  OS: Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.43
+
+Output dir: /home/muhammad_aqif/genomics/ncbi/spadesoutput
+Mode: read error correction and assembling
+Debug mode is turned OFF
+
+Dataset parameters:
+  Standard mode
+  For multi-cell/isolate data we recommend to use '--isolate' option; for single-cell MDA data use '--sc'; for metagenomic data use '--meta'; for RNA-Seq use '--rna'.
+  Reads:
+    Library number: 1, library type: single
+      left reads: not specified
+      right reads: not specified
+      interlaced reads: not specified
+      single reads: ['/home/muhammad_aqif/genomics/ncbi/SRR570.fastq']
+      merged reads: not specified
+Read error correction parameters:
+  Iterations: 1
+  PHRED offset: 33
+  Corrected reads will be compressed
+Assembly parameters:
+  k: automatic selection based on read length
+  Repeat resolution is enabled
+  Mismatch careful mode is turned ON
+  MismatchCorrector will be used
+  Coverage cutoff is turned OFF
+Other parameters:
+  Dir for temp files: /home/muhammad_aqif/genomics/ncbi/spadesoutput/tmp
+  Threads: 4
+  Memory limit (in Gb): 8
+

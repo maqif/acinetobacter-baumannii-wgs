@@ -1,0 +1,204 @@
+- STAGE: Before start
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: before_start
+- STAGE: Read error correction
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: ec_start
+- STAGE: Read error correction
+  args:
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/corrected/configs/config.info
+  config_dir: corrected
+  del_after:
+  - tmp/hammer_ri20epm_
+  output_files:
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/corrected/corrected.yaml
+  path: /usr/libexec/spades/spades-hammer
+  short_name: ec_runtool
+- STAGE: corrected reads compression
+  args:
+  - /usr/share/spades/spades_pipeline/scripts/compress_all.py
+  - --input_file
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/corrected/corrected.yaml
+  - --ext_python_modules_home
+  - /usr/share/spades
+  - --max_threads
+  - '4'
+  - --output_dir
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/corrected
+  - --gzip_output
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: /usr/bin/python3
+  short_name: ec_compress
+- STAGE: Read error correction
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: ec_finish
+- STAGE: Assembling
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: as_start
+- STAGE: K21
+  args:
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K21/configs/config.info
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K21/configs/careful_mode.info
+  config_dir: K21
+  del_after: []
+  output_files: []
+  path: /usr/libexec/spades/spades-core
+  short_name: k21
+- STAGE: K33
+  args:
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K33/configs/config.info
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K33/configs/careful_mode.info
+  config_dir: K33
+  del_after: []
+  output_files: []
+  path: /usr/libexec/spades/spades-core
+  short_name: k33
+- STAGE: K55
+  args:
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K55/configs/config.info
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K55/configs/careful_mode.info
+  config_dir: K55
+  del_after: []
+  output_files: []
+  path: /usr/libexec/spades/spades-core
+  short_name: k55
+- STAGE: K77
+  args:
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K77/configs/config.info
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K77/configs/careful_mode.info
+  config_dir: K77
+  del_after: []
+  output_files: []
+  path: /usr/libexec/spades/spades-core
+  short_name: k77
+- STAGE: Copy files
+  args:
+  - /usr/share/spades/spades_pipeline/scripts/copy_files.py
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K77/before_rr.fasta
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/before_rr.fasta
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K77/assembly_graph_after_simplification.gfa
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/assembly_graph_after_simplification.gfa
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K77/final_contigs.fasta
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/contigs.fasta
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K77/first_pe_contigs.fasta
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/first_pe_contigs.fasta
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K77/strain_graph.gfa
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/strain_graph.gfa
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K77/scaffolds.fasta
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/scaffolds.fasta
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K77/scaffolds.paths
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/scaffolds.paths
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K77/assembly_graph_with_scaffolds.gfa
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/assembly_graph_with_scaffolds.gfa
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K77/assembly_graph.fastg
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/assembly_graph.fastg
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/K77/final_contigs.paths
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/contigs.paths
+  config_dir: ''
+  del_after:
+  - .bin_reads
+  - tmp/spades_5j95j0w6
+  output_files: []
+  path: /usr/bin/python3
+  short_name: copy_files
+- STAGE: Assembling
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: as_finish
+- STAGE: Mismatch correction
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: mc_start
+- STAGE: Mismatch correction contigs
+  args:
+  - /usr/share/spades/spades_pipeline/scripts/correction_iteration_script.py
+  - --corrected
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/contigs.fasta
+  - --assembled
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/misc/assembled_contigs.fasta
+  - --assembly_type
+  - contigs
+  - --output_dir
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput
+  - --bin_home
+  - /usr/libexec/spades
+  config_dir: mismatch_corrector/contigs
+  del_after:
+  - mismatch_corrector/contigs/tmp
+  - tmp/corrector_0pkn8m_4
+  output_files: []
+  path: /usr/bin/python3
+  short_name: mc_contigs
+- STAGE: Mismatch correction scaffolds
+  args:
+  - /usr/share/spades/spades_pipeline/scripts/correction_iteration_script.py
+  - --corrected
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/scaffolds.fasta
+  - --assembled
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/misc/assembled_scaffolds.fasta
+  - --assembly_type
+  - scaffolds
+  - --output_dir
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput
+  - --bin_home
+  - /usr/libexec/spades
+  config_dir: mismatch_corrector/scaffolds
+  del_after:
+  - mismatch_corrector/scaffolds/tmp
+  - tmp/corrector_v35fuknz
+  output_files: []
+  path: /usr/bin/python3
+  short_name: mc_scaffolds
+- STAGE: Mismatch correction
+  args: []
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: 'true'
+  short_name: mc_finish
+- STAGE: Breaking scaffolds
+  args:
+  - /usr/share/spades/spades_pipeline/scripts/breaking_scaffolds_script.py
+  - --result_scaffolds_filename
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/scaffolds.fasta
+  - --misc_dir
+  - /home/muhammad_aqif/genomics/ncbi/spadesoutput/misc
+  - --threshold_for_breaking_scaffolds
+  - '3'
+  config_dir: ''
+  del_after: []
+  output_files: []
+  path: /usr/bin/python3
+  short_name: bs
+- STAGE: Terminate
+  args: []
+  config_dir: ''
+  del_after:
+  - configs
+  output_files: []
+  path: 'true'
+  short_name: terminate

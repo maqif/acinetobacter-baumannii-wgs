@@ -1,0 +1,4 @@
+- "number": !!int "1"
+  "single reads":
+  - "/home/muhammad_aqif/genomics/ncbi/SRR570.fastq"
+  "type": "single"

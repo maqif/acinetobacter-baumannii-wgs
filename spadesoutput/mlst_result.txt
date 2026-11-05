@@ -1,0 +1,1 @@
+contigs.fasta	abaumannii	-	Oxf_gltA(1)	Oxf_gyrB(3)	Oxf_gdhB(3,189)	Oxf_recA(2)	Oxf_cpn60(2)	Oxf_gpi(97)	Oxf_rpoD(3)
