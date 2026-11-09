@@ -6,3 +6,12 @@ spadesoutput/corrected/
 spadesoutput/misc/
 spadesoutput/tmp/
 spadesoutput/mismatch_corrector/
+
+# Large raw and intermediate files
+*.sam
+*.bam
+*.bai
+amrfinderdb/
+mapping/
+sepfastq/
+assembledfastq/
